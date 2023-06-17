@@ -32,11 +32,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final TextEditingController _controller = TextEditingController();
 
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+  }
+
+  void _handleSubmit() {
+    print(_controller.text);
   }
 
   @override
@@ -52,14 +57,15 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
+                controller: _controller,
                 decoration: const InputDecoration(
                     hintText: "Exemplo: naruto",
                     border: UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: Colors.red, width: 2.0)))),
             ElevatedButton(
-              onPressed: () {},
-              child: const Text('GetValue'),
+              onPressed: _handleSubmit,
+              child: const Text('Pesquisar'),
             )
           ],
         ),
